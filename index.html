@@ -1,1 +1,29 @@
-Hello, world!
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power Hour Tasks</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="form_container">
+        <h1>Set Your Power Hour Tasks</h1>
+        <form id="tasks_form">
+            <input type="text" class="task_input" placeholder="Task 1" required>
+            <input type="text" class="task_input" placeholder="Task 2">
+            <input type="text" class="task_input" placeholder="Task 3">
+            <input type="text" class="task_input" placeholder="Task 4">
+            <input type="text" class="task_input" placeholder="Task 5">
+            <button type="submit" class="start_button">Start Power Hour</button>
+        </form>
+    </div>
+
+    <div class="timer_container" style="display: none;">
+        <h1>Power Hour Timer</h1>
+        <div class="timer" id="timer">1:00:00</div>
+        <div id="tasks_list"></div>
+    </div>
+    <script src="/script.js"></script>
+</body>
+</html>
