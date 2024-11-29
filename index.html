@@ -4,17 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Power Hour Tasks</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://krishank.com.np/powerhour/style.css">
 </head>
 <body>
     <div class="form_container">
         <h1>Set Your Power Hour Tasks</h1>
-        <form id="tasks_form">
-            <input type="text" class="task_input" placeholder="Task 1" required>
-            <input type="text" class="task_input" placeholder="Task 2">
-            <input type="text" class="task_input" placeholder="Task 3">
-            <input type="text" class="task_input" placeholder="Task 4">
-            <input type="text" class="task_input" placeholder="Task 5">
+        <form id="tasks_form" class="form">
+            <div class="task_input_group">
+                <input type="text" class="task_input" placeholder="Task 1" required>
+                <input type="text" class="task_input" placeholder="Task 2">
+                <input type="text" class="task_input" placeholder="Task 3">
+                <input type="text" class="task_input" placeholder="Task 4">
+                <input type="text" class="task_input" placeholder="Task 5">
+            </div>
+            
+            <div class="timer_input_group">
+                <label for="customizedLength">Customize Timer Length (in seconds):</label>
+                <input type="number" class="" id="customizedLength" value="3600">
+            </div>
+    
             <button type="submit" class="start_button">Start Power Hour</button>
         </form>
     </div>
@@ -28,6 +36,6 @@
     <div id="tooltip" class="tooltip"></div>
     
     <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
-    <script src="/script.js"></script>
+    <script src="https://krishank.com.np/powerhouse/script.js"></script>
 </body>
 </html>

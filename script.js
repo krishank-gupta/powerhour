@@ -100,8 +100,8 @@ function timerEnded(timerInterval) {
 // Handle form submission
 tasksForm.addEventListener('submit', function (event) {
     event.preventDefault(); // Prevent the form from reloading the page
-
-    const timerInterval = startTimer(10); // Start the timer and get the interval ID
+    length = document.getElementById('customizedLength').value
+    const timerInterval = startTimer(length); // Start the timer and get the interval ID
 
     // Hide form and show timer
     formContainer.style.display = 'none';

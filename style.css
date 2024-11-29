@@ -39,7 +39,7 @@ body {
 }
 
 /* Input Fields */
-.task_input {
+.form input {
     width: 100%;
     padding: 15px;
     margin: 10px 0;
@@ -50,7 +50,7 @@ body {
     transition: background-color 0.3s ease;
 }
 
-.task_input:focus {
+.form input:focus {
     background-color: #e0f7fa;
     border-color: #80deea;
     outline: none;
