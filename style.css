@@ -215,3 +215,18 @@ body {
 .task-text {
     margin-left: 10px;
 }
+
+.tooltip {
+    position: absolute;
+    top: 20px;  /* Adjust the positioning as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    display: none;  /* Hide the tooltip initially */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}

@@ -6,25 +6,57 @@ const tasksForm = document.getElementById('tasks_form');
 function startTimer(length) {
     const startTime = new Date(); // Get the current date and time
     const endTime = new Date(startTime); // Copy the start time
-    endTime.setSeconds(endTime.getSeconds() + length); // Add timeLeft in seconds to the end time
+    endTime.setSeconds(endTime.getSeconds() + length); // Add length (in seconds) to the end time
+
+    const halfwayTime = startTime.getTime() + length * 500; // Get halfway time in milliseconds
+
+    let timeLeft = length; // Initialize timeLeft to the timer length
+
+    // Display the timer immediately
+    updateTimerDisplay(timeLeft);
 
     // Update the timer every second
     const timerInterval = setInterval(() => {
-        const currentTime = new Date(); // Get the current time
-        timeLeft = Math.max(0, Math.floor((endTime - currentTime) / 1000)); // Calculate remaining time in seconds
+        timeLeft--; // Decrease timeLeft by 1 each second
+
+        const currentTime = new Date();
+        
+        // Log when the halfway point is reached
+        if (currentTime >= halfwayTime && currentTime < halfwayTime + 1000) { // Check within 1-second tolerance
+            console.log("Halfway there!");
+            showTooltip("Halfway There!");
+        }
 
         // If the timer reaches 0, stop the interval
         if (timeLeft <= 0) {
             timerEnded(timerInterval);
         } else {
-            const minutes = Math.floor(timeLeft / 60); // Get minutes left
-            const seconds = timeLeft % 60; // Get seconds left
-            timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            updateTimerDisplay(timeLeft);
         }
     }, 1000); // Update every second (1000 ms)
 
     // Return the interval ID so it can be cleared elsewhere
     return timerInterval;
+}
+
+function updateTimerDisplay(timeLeft) {
+    const minutes = Math.floor(timeLeft / 60); // Get minutes left
+    const seconds = timeLeft % 60; // Get seconds left
+    timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+}
+
+function showTooltip(message) {
+    tooltip.textContent = message;  // Set the tooltip message
+    tooltip.style.display = 'block';  // Show the tooltip
+    tooltip.style.opacity = 1;  // Fade in the tooltip
+
+    // Hide the tooltip after 2 seconds
+    setTimeout(() => {
+        tooltip.style.opacity = 0;
+        setTimeout(() => {
+            tooltip.style.display = 'none';  // Hide the tooltip after it fades out
+        }, 300);
+    }, 2000); // Tooltip stays visible for 2 seconds
 }
 
 function timerEnded(timerInterval) {
@@ -63,14 +95,13 @@ function timerEnded(timerInterval) {
             })
         );
     }, 250);
-    
 }
 
 // Handle form submission
 tasksForm.addEventListener('submit', function (event) {
     event.preventDefault(); // Prevent the form from reloading the page
 
-    const timerInterval = startTimer(20); // Start the timer and get the interval ID
+    const timerInterval = startTimer(10); // Start the timer and get the interval ID
 
     // Hide form and show timer
     formContainer.style.display = 'none';
