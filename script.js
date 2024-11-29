@@ -39,8 +39,30 @@ tasksForm.addEventListener('submit', function(event) {
     const tasksList = document.getElementById('tasks_list');
     const tasks = Array.from(document.querySelectorAll('.task_input')).map(input => input.value.trim()).filter(task => task !== '');;
     console.log(tasks);
-    tasksList.innerHTML = `<h2>Your Tasks:</h2><ul>${tasks.map(task => `<li>${task}</li>`).join('')}</ul>`;
     
+    tasksList.innerHTML = `<h2>Your Tasks:</h2><ul>${tasks
+        .map(
+            task => `
+            <li>
+                <input type="checkbox" class="task-checkbox" />
+                <span class="task-text">${task}</span>
+            </li>`
+        )
+        .join('')}
+    </ul>`;
+
+    // Add event listeners to the checkboxes to toggle strikethrough style
+    const checkboxes = document.querySelectorAll('.task-checkbox');
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            const taskText = this.nextElementSibling; // Get the corresponding task text span
+            if (this.checked) {
+                taskText.style.textDecoration = 'line-through'; // Apply strikethrough
+            } else {
+                taskText.style.textDecoration = 'none'; // Remove strikethrough
+            }
+        });
+    });
     startTimer();
 });
 
