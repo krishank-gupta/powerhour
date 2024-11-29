@@ -1,3 +1,4 @@
+console.log("hello world")
 const timerElement = document.getElementById('timer');
 const formContainer = document.querySelector('.form_container');
 const timerContainer = document.querySelector('.timer_container');
