@@ -31,6 +31,7 @@ function startTimer(length) {
         // If the timer reaches 0, stop the interval
         if (timeLeft <= 0) {
             timerEnded(timerInterval);
+            showTooltip("Timer is Out")
         } else {
             updateTimerDisplay(timeLeft);
         }
@@ -145,7 +146,7 @@ tasksForm.addEventListener('submit', function (event) {
             const allChecked = Array.from(checkboxes).every(cb => cb.checked);
             if (allChecked) {
                 timerEnded(timerInterval); // Stop the timer when all are checked
-                console.log("All tickmarks checked");
+                showTooltip("All Work Is Done")
             }
         });
     });
